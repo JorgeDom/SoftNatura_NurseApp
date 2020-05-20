@@ -67,6 +67,7 @@ Now, in a web browser, copy the next URL:
 
 The Login screen should appear and look like this:
 ![Login](/images/login.PNG)
+
 Use the following credentials for testing:
 - As a nurse: `username: nurse1` - `password: challenge1`
 - As a patient: `personal ID: 123456`
