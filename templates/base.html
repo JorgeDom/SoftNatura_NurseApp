@@ -1,0 +1,71 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>NurseApp</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="Jorge Dominguez" content="NurseApp">
+
+        {% load staticfiles %}
+
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <!-- fontAwesome CSS -->
+        <link rel="stylesheet" href="{% static 'fontawesome-free-5.13.0-web/css/all.css' %}" type = "text/css"/>
+        <!-- DataTable CSS -->
+        <link rel="stylesheet" href="{% static 'DataTables 1.10.20/datatables.min.css' %}" type = "text/css"/>
+        <!-- CSS Adicionales por cada App -->
+        <link rel="stylesheet" href="{% static 'CSS_files/extras.css' %}" type = "text/css"/>
+
+        <!-- Jquery -->
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+                integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+                crossorigin="anonymous"></script>
+        <!-- Popper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <!-- Jquery-UI -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+                integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+                crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <!-- DataTable JS-->
+        <script src="{% static 'DataTables 1.10.20/datatables.min.js' %}"></script>
+
+        <!-- Highcharts - stock -->
+        <script type="text/javascript" src="{% static 'highcharts-stock-8.1.0/code/highstock.js' %}"></script>
+
+
+        <style>
+            html, body {
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container-fluid h-100" style="min-width: 1280px; min-height: 720px">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("body").tooltip({ selector: '[data-tooltip=tooltip]' });
+            });
+        </script>
+
+        <script type="text/javascript" src="{% static 'JS_files/nurseApp/extra_JS_functions.js' %}"></script>
+        <script type="text/javascript" src="{% static 'JS_files/dataTables.js' %}"></script>
+    </body>
+</html>

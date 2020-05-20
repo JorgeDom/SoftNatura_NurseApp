@@ -1,0 +1,14 @@
+table#patientsList td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+table#tableHistoricalDataNurse td, table#tableHistoricalDataPatient td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+td.tasks {
+    display: flex;
+    justify-content: space-around;
+}

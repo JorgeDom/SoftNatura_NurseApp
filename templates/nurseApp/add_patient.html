@@ -1,0 +1,51 @@
+<!-- templates/nurseApp/add_patient.html -->
+{% extends 'base.html' %}
+
+{% block title %}Add Patient{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center h-100">
+
+        {% include 'includes/sidebar.html' %}
+
+        <div class="col-lg-10 col-sm-12">
+            <br>
+            <!-- ////////////////////////// ALERTS! \\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+            {% include 'includes/form_error_alert.html' %}
+
+            <h3>Register Patient</h3>
+            <hr>
+            <form id="PatientForm" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">{{ form.name }}
+                            <small id="nameHelpBlock"
+                                   class="form-text text-muted">{{ form.name.help_text|safe }}
+                            </small>
+                        </div>
+                        <div class="form-group">{{ form.age }}
+                            <small id="ageHelpBlock" class="form-text text-muted">{{ form.age.help_text|safe }}
+                            </small>
+                        </div>
+                        <div class="form-group">{{ form.custom_id }}
+                            <small id="custom_idHelpBlock"
+                                   class="form-text text-muted">{{ form.custom_id.help_text|safe }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex col-md-6 justify-content-end">
+                    <div class="p-1">
+                        <input type="submit" name="submit" value="Register" class="btn btn-primary"/>
+                    </div>
+                    <div class="p-1">
+                        <a href="{% url 'view_patients' %}" class="btn btn-secondary" role="button"
+                           data-toggle="tooltip" data-placement="bottom" title="Go to List">
+                        <i class="fas fa-list-alt"></i></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

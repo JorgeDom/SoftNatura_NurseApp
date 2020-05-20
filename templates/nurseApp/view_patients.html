@@ -1,0 +1,59 @@
+<!-- templates/nurseApp/view_patients.html -->
+{% extends 'base.html' %}
+
+{% block title %}List of Patients{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center h-100">
+
+        {% include 'includes/sidebar.html' %}
+        {% include 'includes/nurseApp/modalAddVitalSigns.html' %}
+        {% include 'includes/nurseApp/modalChangeStatus.html' %}
+        {% include 'includes/nurseApp/modalDeleteProfile.html' %}
+
+        <div class="col-lg-10 col-sm-12">
+            <br>
+            <!-- ////////////////////////// ALERTS! \\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+            {% include 'includes/form_error_alert.html' %}
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between">
+                    <h3>List of Patients</h3>
+                    <a class="btn btn-dark" href="{% url 'add_patient' %}" role="button" style="width: 200px">
+                        <i class="fas fa-user-plus"></i> &ensp; Register patient
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-12">
+                    <table class="table table-striped table-bordered table-sm small" id="patientsList">
+                        <thead class="thead-dark">
+                            <tr align="center">
+                                <th rowspan="2">Priority</th>
+                                <th colspan="3">Patient</th>
+                                <th colspan="3">Last check recorded</th>
+                                <th rowspan="2">Tasks</th>
+                                <th rowspan="2">Status</th>
+                            </tr>
+                            <tr align="center">
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>ID</th>
+                                <th>Date - Time</th>
+                                <th>Blood pressure</th>
+                                <th>Heart rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- LOS DATOS VIENEN CON AJAX DESDE LA DECLARACION DEL DATATABLES (archivos JS/datatables.js)
+                                 Y LA FUNCION EN view.py ES get_patients_datatable-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

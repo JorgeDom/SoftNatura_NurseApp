@@ -1,0 +1,56 @@
+<!-- modal_add_vital_signs.html -->
+
+{% block content %}
+    <div class="modal fade modalEditVitalSigns" id="modalEditVitalSigns">
+        <div class="modal-dialog modal-tablas">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Vital Signs</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12" id="alert_modal">
+                        <!-- ////////////////////////// ALERTS! \\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+                        <div id="results"></div> <!-- errors go here -->
+                    </div>
+                </div>
+                <form id="formModalEditVitalSigns" method="post">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 id="record_date"></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" name="id_record" class="form-control" hidden="hidden" maxlength="50" id="id_id_record">
+                                </div>
+                                <div class="form-group">{{ form_records.bp_systolic }}
+                                    <small id="bp_systolicHelpBlock"
+                                           class="form-text text-muted">{{ form_records.bp_systolic.help_text|safe }}</small>
+                                </div>
+                                <div class="form-group">{{ form_records.bp_diastolic }}
+                                    <small id="bp_diastolicHelpBlock"
+                                           class="form-text text-muted">{{ form_records.bp_diastolic.help_text|safe }}</small>
+                                </div>
+                                <div class="form-group">{{ form_records.heart_rate }}
+                                    <small id="heart_rateHelpBlock"
+                                           class="form-text text-muted">{{ form_records.heart_rate.help_text|safe }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer form-group">
+                        <input type="submit" name="submit" value="Register" class="btn btn-primary"/>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

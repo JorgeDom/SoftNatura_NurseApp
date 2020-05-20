@@ -1,0 +1,118 @@
+<!-- templates/nurseApp/view_historical_data.html -->
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Patient Historical Data{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center h-100">
+        {% if user.is_authenticated %}
+            {% include 'includes/sidebar.html' %}
+            {% include 'includes/nurseApp/modalAddVitalSigns.html' %}
+            {% include 'includes/nurseApp/modalEditVitalSigns.html' %}
+            {% include 'includes/nurseApp/modalDeleteVitalSignsRecord.html' %}
+        {% endif %}
+
+        <div class="col-lg-10 col-sm-12">
+            {% if notFound %}
+                <div class="row m-5">
+                    <h1>Oops! Something went wrong. </h1>
+                </div>
+                <div class="row d-flex flex-column m-5">
+                    <p>The patient with the <strong>ID: {{ custom_id }}</strong> was not found.
+                        Please verify if the credentials are correct and try again.</p>
+
+                    <p>If the problem persists, please contact with support at: +595999123456</p>
+                </div>
+                <div class="row m-5">
+                    <a class="btn btn-dark" href="{{ request.META.HTTP_REFERER }}" role="button" style="width: 200px">
+                        <i class="fas fa-arrow-circle-left"></i> &ensp; Go back
+                    </a>
+                </div>
+            {% else %}
+            <br>
+            <!-- ////////////////////////// ALERTS! \\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+            {% include 'includes/form_error_alert.html' %}
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between">
+                    <div>
+                         <h3>{{ patient }} (ID: {{ patient_custom_id }})</h3>
+                    </div>
+                    <div>
+                        {% if user.is_authenticated %}
+                            <input type="text" value="{{ patient_id }}" id="input_patient_id_historical_data" hidden>
+                            <button class="btn btn-dark" role="button"
+                                    data-toggle="modal"
+                                    data-target="#modalAddVitalSigns"
+                                    data-patient_name= "{{ patient }}"
+                                    data-patient_id="{{ patient_id }}"
+                                    data-patient_custom_id="{{ patient_custom_id }}"
+                                    style="width: 200px">
+                                <i class="fas fa-file-medical-alt"></i> &ensp; Add Vital Signs
+                            </button>
+                            <a class="btn btn-dark" href="{{ request.META.HTTP_REFERER }}" role="button">
+                                <i class="fas fa-arrow-circle-left"></i> &ensp; Go back
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row d-flex justify-content-center">
+                <div class="col-10" id="graphHistoricalData">
+
+                </div>
+            </div>
+            <hr>
+            <div class="row d-flex justify-content-center">
+                <div class="col-10">
+                    {% if user.is_authenticated %}  <!-- in case a nurse want to see the data -->
+                        <table class="table table-striped table-bordered table-sm small table-responsive-sm" id="tableHistoricalDataNurse">
+                            <thead class="thead-dark">
+                                <tr align="center">
+                                    <th rowspan="2">Date - Time</th>
+                                    <th colspan="2">Blood Pressure</th>
+                                    <th colspan="2">Heart Rate</th>
+                                    <th rowspan="2">Tasks</th>
+                                </tr>
+                                <tr align="center">
+                                    <th>Systolic / Diastolic</th>
+                                    <th>Category</th>
+                                    <th>Beats per minute (bpm)</th>
+                                    <th>Evaluation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- LOS DATOS VIENEN CON AJAX DESDE LA DECLARACION DEL DATATABLES (archivos JS/datatables.js)
+                                     Y LA FUNCION EN view.py ES get_patient_historical_data-->
+                            </tbody>
+                        </table>
+                    {% else %}  <!-- in case a patient want to see his/her data -->
+                        <table class="table table-striped table-bordered table-sm small table-responsive-sm" id="tableHistoricalDataPatient">
+                            <thead class="thead-dark">
+                                <tr align="center">
+                                    <th rowspan="2">Date - Time</th>
+                                    <th colspan="2">Blood Pressure</th>
+                                    <th colspan="2">Heart Rate</th>
+                                </tr>
+                                <tr align="center">
+                                    <th>Systolic / Diastolic</th>
+                                    <th>Category</th>
+                                    <th>Beats per minute (bpm)</th>
+                                    <th>Evaluation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- LOS DATOS VIENEN CON AJAX DESDE LA DECLARACION DEL DATATABLES (archivos JS/datatables.js)
+                                     Y LA FUNCION EN view.py ES get_patient_historical_data-->
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% block content %}
+    <div class="modal fade" id="modalViewHistoricalData">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Welcome!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <form id="formModalViewHistoricalData" method="post">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                If you want to obtain your history of records, please specify the <strong>Personal ID</strong>
+                                you provided to the Nurse.
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input title="" type="text" class="form-control" id="patient_custom_id" value="" placeholder="Specify your personal ID">
+                        </div>
+                    </div>
+                     <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal" style="float: right">Close</button>
+                        <a class="btn btn-primary" href="#" title="View Historical data" id="btnViewHistoricalData">View</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

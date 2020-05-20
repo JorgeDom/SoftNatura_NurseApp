@@ -1,0 +1,18 @@
+<!-- template/registrations/notLogin.html -->
+{% block content %}
+    <div class=" d-flex justify-content-center align-content-center h-100 bg-light">
+        <div class="col-sm-8 col-lg-6 d-flex">
+            <div class="card m-auto text-center">
+                <div class="card-header">
+                    <h1><i class="fa fa-exclamation-triangle" style="color: #9f191f"></i></h1>
+                    <h1>¡No estás identificado!</h1>
+                </div>
+                <div class="card-body">
+                    <h3>Lo sentimos, pero debes proveer de tus credenciales para poder acceder al sistema</h3>
+                    <br><br>
+                    <a class="btn btn-success" href="{% url 'login' %}">Ir a la página de ingreso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

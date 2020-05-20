@@ -1,0 +1,18 @@
+<!-- templates/includes/sidebar.html -->
+
+{% load static %}
+
+{% block content %}
+    <div class="col-lg-2 bg-dark pr-0 pl-0">
+        <nav class="nav flex-column">
+            <h3 class="m-3 text-white">NurseApp</h3>
+            <hr>
+            <a class="nav-link text-light" href="{% url 'index' %}"><i class="fas fa-home"></i> &ensp; Home</a>
+            <hr>
+            <a class="nav-link text-light" href="{% url 'view_patients' %}"><i class="fas fa-users"></i> &ensp; Patients</a>
+            <hr>
+            <a class="nav-link text-light" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> &ensp; Exit</a>
+        </nav>
+    </div>
+
+{% endblock %}

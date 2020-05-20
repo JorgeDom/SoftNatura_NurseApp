@@ -1,0 +1,50 @@
+<!-- templates/nurseApp/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center h-100">
+
+        {% include 'includes/sidebar.html' %}
+
+        <div class="col-lg-10 col-sm-12">
+            <div class="row d-flex flex-column">
+                <div class="col-12">
+                    <h1> Welcome {{ user.username }} </h1>
+                    <span>Please select the task you want to perform.</span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 p-3 d-flex">
+                    <div class="card mr-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center mb-3"> <i class="fas fa-user-injured fa-9x"></i></div>
+                            <h5 class="card-title">Register a Patient</h5>
+                            <p class="card-text">Specify the patient's Name, Age and some ID.</p>
+                            <a href="{% url 'add_patient' %}" class="btn btn-dark btn-block">Register</a>
+                        </div>
+                    </div>
+                    <div class="card mr-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center mb-3"> <i class="fas fa-list-alt fa-9x"></i></div>
+                            <h5 class="card-title">List of Patients</h5>
+                            <p class="card-text">View the list of all registered patients.</p>
+                            <a href="{% url 'view_patients' %}" class="btn btn-dark btn-block">View</a>
+                        </div>
+                    </div>
+                    <!--<div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center mb-3"> <i class="fas fa-user-injured fa-9x"></i></div>
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>-->
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
