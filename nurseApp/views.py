@@ -133,30 +133,54 @@ def get_patients_datatable(request):
                                               " id=\"btnModalChangeStatus\">" \
                                               " <i class=\"fas fa-toggle-on fa-2x text-dark\"></i></a>"
         else:
-            priority = "<i class=\"fas fa-user-slash fa-2x text-muted\"" \
-                       "data-tooltip=\"tooltip\" " \
-                       "data-placement=\"top\" " \
-                       "title=\"Patient's profile currently inactivated\"></i>" \
-                       "<span hidden> 100 inactive </span>"
+            if last_record is not None:
+                priority = "<i class=\"fas fa-user-slash fa-2x text-muted\"" \
+                           "data-tooltip=\"tooltip\" " \
+                           "data-placement=\"top\" " \
+                           "title=\"Patient's profile currently inactivated\"></i>" \
+                           "<span hidden> 100 inactive </span>"
 
-            btn_view_data = "<i class=\"fas fa-notes-medical fa-2x text-muted\"></i>"
-            btn_add_signals = "<i class=\"fas fa-file-medical-alt fa-2x text-muted\"></i>"
-            btn_edit_data = "<i class=\"fas fa-user-edit fa-2x text-muted\"></i>"
-            btn_patient_delete = "<i class=\"fas fa-user-times fa-2x text-muted\"></i>"
-            btn_patient_status = "<a href=\"#\" data-tooltip=\"tooltip\"" \
-                                              " data-placement=\"top\" " \
-                                              " title=\"Change status\"" \
-                                              " data-patient_id=\"" + str(patient['_id']) + "\"" \
-                                              " data-patient_custom_id=\"" + str(patient['custom_id']) + "\"" \
-                                              " data-patient_name=\"" + str(patient['name']) + "\"" \
-                                              " data-patient_status=\"" + str(patient['status']) + "\"" \
-                                              " data-toggle=\"modal\"" \
-                                              " data-target=\"#modalChangeStatus\"" \
-                                              " id=\"btnModalChangeStatus\">" \
-                                              " <i class=\"fas fa-toggle-off fa-2x text-dark\"></i></a>"
-            ts = str(datetime.strftime(last_record['ts'], '%d/%m/%Y - %H:%M'))
-            bp = str(last_record['bp_systolic']) + '/'+ str(last_record['bp_diastolic'])
-            hr = str(last_record['heart_rate']) + ' (bpm)'
+                btn_view_data = "<i class=\"fas fa-notes-medical fa-2x text-muted\"></i>"
+                btn_add_signals = "<i class=\"fas fa-file-medical-alt fa-2x text-muted\"></i>"
+                btn_edit_data = "<i class=\"fas fa-user-edit fa-2x text-muted\"></i>"
+                btn_patient_delete = "<i class=\"fas fa-user-times fa-2x text-muted\"></i>"
+                btn_patient_status = "<a href=\"#\" data-tooltip=\"tooltip\"" \
+                                                  " data-placement=\"top\" " \
+                                                  " title=\"Change status\"" \
+                                                  " data-patient_id=\"" + str(patient['_id']) + "\"" \
+                                                  " data-patient_custom_id=\"" + str(patient['custom_id']) + "\"" \
+                                                  " data-patient_name=\"" + str(patient['name']) + "\"" \
+                                                  " data-patient_status=\"" + str(patient['status']) + "\"" \
+                                                  " data-toggle=\"modal\"" \
+                                                  " data-target=\"#modalChangeStatus\"" \
+                                                  " id=\"btnModalChangeStatus\">" \
+                                                  " <i class=\"fas fa-toggle-off fa-2x text-dark\"></i></a>"
+                ts = str(datetime.strftime(last_record['ts'], '%d/%m/%Y - %H:%M'))
+                bp = str(last_record['bp_systolic']) + '/'+ str(last_record['bp_diastolic'])
+                hr = str(last_record['heart_rate']) + ' (bpm)'
+            else:
+                priority = "<i class=\"fas fa-user-slash fa-2x text-muted\"" \
+                           "data-tooltip=\"tooltip\" " \
+                           "data-placement=\"top\" " \
+                           "title=\"Patient's profile currently inactivated\"></i>" \
+                           "<span hidden> 100 inactive </span>"
+
+                btn_view_data = "<i class=\"fas fa-notes-medical fa-2x text-muted\"></i>"
+                btn_add_signals = "<i class=\"fas fa-file-medical-alt fa-2x text-muted\"></i>"
+                btn_edit_data = "<i class=\"fas fa-user-edit fa-2x text-muted\"></i>"
+                btn_patient_delete = "<i class=\"fas fa-user-times fa-2x text-muted\"></i>"
+                btn_patient_status = "<a href=\"#\" data-tooltip=\"tooltip\"" \
+                                                  " data-placement=\"top\" " \
+                                                  " title=\"Change status\"" \
+                                                  " data-patient_id=\"" + str(patient['_id']) + "\"" \
+                                                  " data-patient_custom_id=\"" + str(patient['custom_id']) + "\"" \
+                                                  " data-patient_name=\"" + str(patient['name']) + "\"" \
+                                                  " data-patient_status=\"" + str(patient['status']) + "\"" \
+                                                  " data-toggle=\"modal\"" \
+                                                  " data-target=\"#modalChangeStatus\"" \
+                                                  " id=\"btnModalChangeStatus\">" \
+                                                  " <i class=\"fas fa-toggle-off fa-2x text-dark\"></i></a>"
+                ts = bp = hr = ' - '
         # the data array to populate the table is set
         data.append({"DT_RowId": str(patient['_id']),
                     "priority": priority,
