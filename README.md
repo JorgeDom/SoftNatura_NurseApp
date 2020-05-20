@@ -65,10 +65,31 @@ For that porpuse, run the following command:
 Now, in a web browser, copy the next URL:
 > http://127.0.0.1:8000/login/
 
+The Login screen should appear and look like this:
+![Login](/images/login.PNG)
+Use the following credentials for testing:
+- As a nurse: `username: nurse1` - `password: challenge1`
+- As a patient: `personal ID: 123456`
+
+### Other Examples
+- Form to register a patient
+![Register a Patient](/images/register_a_patient.PNG)
+
+- List of patient ordered by the priority based on their blood pressure data:
+![List of Patients](/images/list_of_patients.PNG)
+
+- Graph and Table showing a patient historical data:
+![Patient Historical Data](/images/patient_History_data.PNG)
+
+
 ## Built With
 [Django](https://www.djangoproject.com/) - Python Web Framework
 
 [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud Database Service
+
+[DataTables](https://datatables.net/) - For the tables
+
+[HighCharts](https://www.highcharts.com/) - For the Graph
 
 ## Author
 - **Jorge Dominguez**
